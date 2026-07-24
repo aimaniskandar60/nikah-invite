@@ -90,7 +90,15 @@ export default function Home() {
           <p className="mt-3 text-stone-700">Please respond by {siteContent.rsvpDeadline}.</p>
 
           <div className="mt-8">
-            <RsvpForm formId={rsvpConfig.formId} />
+            <RsvpForm
+              formId={rsvpConfig.formId}
+              guestNameEntryId={rsvpConfig.entries.guestName}
+              attendanceEntryId={rsvpConfig.entries.attendance}
+              guestsEntryId={rsvpConfig.entries.guests}
+              defaultGuestName={rsvpConfig.defaults.guestName}
+              defaultAttendance={rsvpConfig.defaults.attendance}
+              defaultGuests={rsvpConfig.defaults.guests}
+            />
           </div>
         </div>
       </section>
