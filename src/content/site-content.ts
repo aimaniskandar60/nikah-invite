@@ -21,11 +21,11 @@ export type SiteContent = {
   introLine: string;
   tagline: string;
   rsvpDeadline: string;
-  contact: {
+  contacts: {
     name: string;
     phone: string;
     email?: string;
-  };
+  }[];
   events: EventDetails[];
 };
 
@@ -35,17 +35,34 @@ export const siteContent: SiteContent = {
     partnerTwo: "Aiman",
   },
   introLine: "With gratitude to Allah, we invite you to celebrate our Nikah.",
-  tagline: "Your presence and duas mean the world to us.",
-  rsvpDeadline: "September 15, 2026",
-  contact: {
-    name: "Aiman",
-    phone: "+60 1420 1234",
-    email: "family@example.com",
-  },
+  tagline: "Join us for a day of love, faith, and togetherness.",
+  rsvpDeadline: "TBD",
+  contacts: [
+    {
+      name: "Contact Person 1",
+      phone: "+60 1111 1111",
+      email: "contact1@example.com",
+    },
+    {
+      name: "Contact Person 2",
+      phone: "+60 1222 2222",
+      email: "contact2@example.com",
+    },
+    {
+      name: "Contact Person 3",
+      phone: "+60 1333 3333",
+      email: "contact3@example.com",
+    },
+    {
+      name: "Contact Person 4",
+      phone: "+60 1444 4444",
+      email: "contact4@example.com",
+    },
+  ],
   events: [
     {
       title: "Nikah Ceremony",
-      date: "Saturday, September 8, 2028",
+      date: "Saturday, September 8 2028",
       venue: "Azzalea's House",
       address: "123 Jalan Example, Kuala Lumpur",
       mapsUrl: "https://maps.google.com/?q=123+Jalan+Example,+Kuala+Lumpur",

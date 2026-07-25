@@ -22,9 +22,10 @@ export default function Home() {
             السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
           </p>
           <h1 className="mt-8 text-5xl font-semibold leading-tight text-stone-900 sm:text-7xl">
-            Azzalea & Aiman
+            {siteContent.couple.partnerOne} & {siteContent.couple.partnerTwo}
           </h1>
           <p className="mt-5 text-lg text-stone-700 sm:text-xl">{event.date}</p>
+          <p className="mx-auto mt-5 max-w-3xl text-base text-stone-700 sm:text-lg">{siteContent.introLine}</p>
           <p className="mx-auto mt-8 max-w-2xl text-base text-stone-700 sm:text-lg">{siteContent.tagline}</p>
         </div>
       </section>
