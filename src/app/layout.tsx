@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${titleFont.variable} ${bodyFont.variable} ${arabicFont.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-stone-100 text-stone-900 flex flex-col">
+      <body className="flex min-h-full flex-col bg-[var(--bg-base)] text-[var(--text-strong)]">
         <SiteHeader />
         {children}
         <SiteFooter />

@@ -27,13 +27,13 @@ function SubmissionSummary({ attendance, guestName }: SubmissionSummaryProps) {
   if (attendance === "Yes") {
     return (
       <section
-        className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm sm:p-8"
+        className="rounded-2xl border border-[var(--teal-200)] bg-[var(--teal-50)] p-6 shadow-sm sm:p-8"
         role="status"
         aria-live="polite"
       >
-        <p className="text-sm uppercase tracking-[0.16em] text-emerald-700">RSVP Received</p>
-        <h3 className="mt-2 text-2xl font-semibold text-emerald-900">Alhamdulillah, thank you {safeGuestName}.</h3>
-        <p className="mt-3 text-emerald-800">
+        <p className="text-sm uppercase tracking-[0.16em] text-[var(--teal-700)]">RSVP Received</p>
+        <h3 className="mt-2 text-2xl font-semibold text-[var(--teal-700)]">Alhamdulillah, thank you {safeGuestName}.</h3>
+        <p className="mt-3 text-[var(--teal-700)]">
           We are truly grateful that you will be attending and celebrating this special day with us.
           Your presence means so much to our families.
         </p>
@@ -43,13 +43,13 @@ function SubmissionSummary({ attendance, guestName }: SubmissionSummaryProps) {
 
   return (
     <section
-      className="rounded-2xl border border-amber-200 bg-amber-50 p-6 shadow-sm sm:p-8"
+      className="rounded-2xl border border-[var(--purple-200)] bg-[var(--purple-50)] p-6 shadow-sm sm:p-8"
       role="status"
       aria-live="polite"
     >
-      <p className="text-sm uppercase tracking-[0.16em] text-amber-700">RSVP Received</p>
-      <h3 className="mt-2 text-2xl font-semibold text-amber-900">Thank you for letting us know, {safeGuestName}.</h3>
-      <p className="mt-3 text-amber-800">
+      <p className="text-sm uppercase tracking-[0.16em] text-[var(--purple-700)]">RSVP Received</p>
+      <h3 className="mt-2 text-2xl font-semibold text-[var(--purple-700)]">Thank you for letting us know, {safeGuestName}.</h3>
+      <p className="mt-3 text-[var(--purple-700)]">
         We are sorry you are unable to attend and we will miss celebrating with you.
         We sincerely appreciate your swift response.
       </p>
@@ -108,10 +108,10 @@ export function RsvpForm({
         method="POST"
         target={frameName}
         onSubmit={handleSubmit}
-        className="space-y-6 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8"
+        className="space-y-6 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-sm sm:p-8"
       >
         <div>
-          <label htmlFor="guest-name" className="text-sm uppercase tracking-[0.16em] text-stone-500">
+          <label htmlFor="guest-name" className="text-sm uppercase tracking-[0.16em] text-[var(--text-muted)]">
             Guest Name
           </label>
           <input
@@ -127,14 +127,14 @@ export function RsvpForm({
               }
             }}
             placeholder="Enter your name"
-            className="mt-3 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none ring-stone-300 transition focus:ring"
+            className="mt-3 w-full rounded-xl border border-[var(--border-soft)] bg-white px-4 py-3 text-[var(--text-strong)] outline-none ring-[var(--purple-200)] transition focus:ring"
           />
         </div>
 
         <div>
-          <p className="text-sm uppercase tracking-[0.16em] text-stone-500">Will you be attending?</p>
+          <p className="text-sm uppercase tracking-[0.16em] text-[var(--text-muted)]">Will you be attending?</p>
           <fieldset className="mt-3 flex flex-wrap gap-3" aria-label="Attendance response">
-            <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-stone-300 px-4 py-2 text-sm text-stone-800">
+            <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-[var(--teal-200)] bg-[var(--teal-50)] px-4 py-2 text-sm text-[var(--teal-700)]">
               <input
                 type="radio"
                 name={`entry.${attendanceEntryId}`}
@@ -146,12 +146,12 @@ export function RsvpForm({
                     setSubmitState("idle");
                   }
                 }}
-                className="h-4 w-4 accent-stone-900"
+                className="h-4 w-4 accent-[var(--teal-700)]"
                 required
               />
               Yes
             </label>
-            <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-stone-300 px-4 py-2 text-sm text-stone-800">
+            <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-[var(--purple-200)] bg-[var(--purple-50)] px-4 py-2 text-sm text-[var(--purple-700)]">
               <input
                 type="radio"
                 name={`entry.${attendanceEntryId}`}
@@ -163,7 +163,7 @@ export function RsvpForm({
                     setSubmitState("idle");
                   }
                 }}
-                className="h-4 w-4 accent-stone-900"
+                className="h-4 w-4 accent-[var(--purple-700)]"
                 required
               />
               No
@@ -173,7 +173,7 @@ export function RsvpForm({
 
         {attendance === "Yes" ? (
           <div>
-            <label htmlFor="guest-count" className="text-sm uppercase tracking-[0.16em] text-stone-500">
+            <label htmlFor="guest-count" className="text-sm uppercase tracking-[0.16em] text-[var(--text-muted)]">
               Number of Guests
             </label>
             <input
@@ -190,7 +190,7 @@ export function RsvpForm({
                   setSubmitState("idle");
                 }
               }}
-              className="mt-3 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none ring-stone-300 transition focus:ring"
+              className="mt-3 w-full rounded-xl border border-[var(--border-soft)] bg-white px-4 py-3 text-[var(--text-strong)] outline-none ring-[var(--purple-200)] transition focus:ring"
             />
           </div>
         ) : (
@@ -201,7 +201,7 @@ export function RsvpForm({
           <button
             type="submit"
             disabled={submitState === "submitting"}
-            className="inline-flex items-center justify-center rounded-full bg-stone-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center justify-center rounded-full bg-[var(--purple-700)] px-6 py-3 text-sm font-medium text-white transition hover:bg-[var(--purple-500)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {submitState === "submitting" ? "Submitting..." : "Submit RSVP"}
           </button>

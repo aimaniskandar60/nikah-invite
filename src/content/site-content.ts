@@ -15,8 +15,16 @@ export type EventDetails = {
 
 export type SiteContent = {
   couple: {
-    partnerOne: string;
-    partnerTwo: string;
+    bride: {
+      name: string;
+      relationLabel: "daughter of" | "son of";
+      parents: string;
+    };
+    groom: {
+      name: string;
+      relationLabel: "daughter of" | "son of";
+      parents: string;
+    };
   };
   introLine: string;
   tagline: string;
@@ -31,10 +39,18 @@ export type SiteContent = {
 
 export const siteContent: SiteContent = {
   couple: {
-    partnerOne: "Azzalea",
-    partnerTwo: "Aiman",
+    bride: {
+      name: "Azzalea",
+      relationLabel: "daughter of",
+      parents: "Gazali bin Abdul Rahman & Noorshida binti Hashim",
+    },
+    groom: {
+      name: "Aiman",
+      relationLabel: "son of",
+      parents: "Murhiz bin Mohd Nor & Anita binti Osman",
+    },
   },
-  introLine: "With gratitude to Allah, we invite you to celebrate our Nikah.",
+  introLine: "With gratitude to Allah, we invite you to celebrate the Nikah of",
   tagline: "Join us for a day of love, faith, and togetherness.",
   rsvpDeadline: "TBD",
   contacts: [
@@ -62,7 +78,7 @@ export const siteContent: SiteContent = {
   events: [
     {
       title: "Nikah Ceremony",
-      date: "Saturday, September 8 2028",
+      date: "Saturday, September 8, 2028",
       venue: "Azzalea's House",
       address: "123 Jalan Example, Kuala Lumpur",
       mapsUrl: "https://maps.google.com/?q=123+Jalan+Example,+Kuala+Lumpur",

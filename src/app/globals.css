@@ -3,6 +3,21 @@
 :root {
   --background: #f7f3ed;
   --foreground: #231f1a;
+  --bg-base: #f7f3ed;
+  --bg-soft: #fcf8f2;
+  --surface: #ffffff;
+  --surface-subtle: #f8f4ed;
+  --border-soft: #ddd3c7;
+  --text-strong: #2c251f;
+  --text-muted: #6b6257;
+  --teal-50: #e8f7f5;
+  --teal-200: #a8ddd8;
+  --teal-500: #2faea7;
+  --teal-700: #1f7e79;
+  --purple-50: #f1ecf9;
+  --purple-200: #cfbee8;
+  --purple-500: #7e63b5;
+  --purple-700: #5b438d;
 }
 
 @theme inline {
@@ -13,8 +28,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-base);
+  color: var(--text-strong);
   font-family: var(--font-body), sans-serif;
 }
 

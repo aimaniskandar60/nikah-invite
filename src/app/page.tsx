@@ -4,6 +4,8 @@ import { siteContent } from "@/content/site-content";
 
 export default function Home() {
   const event = siteContent.events[0];
+  const bride = siteContent.couple.bride;
+  const groom = siteContent.couple.groom;
 
   if (!event) {
     return (
@@ -16,35 +18,47 @@ export default function Home() {
 
   return (
     <main>
-      <section id="hero" className="relative overflow-hidden border-b border-stone-200/70 bg-[#f8f4ee]">
-        <div className="mx-auto w-full max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-24">
-          <p className="font-arabic text-2xl text-stone-700 sm:text-3xl">
+      <section id="hero" className="relative isolate overflow-hidden border-b border-[var(--border-soft)] bg-[var(--bg-soft)]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_24%,var(--teal-50)_0%,transparent_48%),radial-gradient(circle_at_82%_30%,var(--purple-50)_0%,transparent_46%)]"
+        />
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-24">
+          <p className="font-arabic text-2xl text-[var(--teal-700)] sm:text-3xl">
             السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
           </p>
-          <h1 className="mt-8 text-5xl font-semibold leading-tight text-stone-900 sm:text-7xl">
-            {siteContent.couple.partnerOne} & {siteContent.couple.partnerTwo}
+          <p className="mx-auto mt-5 max-w-3xl text-base text-[var(--text-muted)] sm:text-lg">{siteContent.introLine}</p>
+          <h1 className="mt-8 text-5xl font-semibold leading-tight text-[var(--foreground)] sm:text-7xl">
+            <span className="block">{bride.name}</span>
+            <span className="mt-2 block font-sans text-sm text-[var(--text-muted)] sm:text-base">
+              <span className="tracking-[0.02em]">{bride.relationLabel} {bride.parents}</span>
+            </span>
+            <span className="mx-auto mt-6 block" aria-hidden="true">&</span>
+            <span className="mt-6 block">{groom.name}</span>
+            <span className="mt-2 block font-sans text-sm text-[var(--text-muted)] sm:text-base">
+              <span className="tracking-[0.02em]">{groom.relationLabel} {groom.parents}</span>
+            </span>
           </h1>
-          <p className="mt-5 text-lg text-stone-700 sm:text-xl">{event.date}</p>
-          <p className="mx-auto mt-5 max-w-3xl text-base text-stone-700 sm:text-lg">{siteContent.introLine}</p>
-          <p className="mx-auto mt-8 max-w-2xl text-base text-stone-700 sm:text-lg">{siteContent.tagline}</p>
+          <p className="mt-5 text-lg text-[var(--purple-700)] sm:text-xl">{event.date}</p>
+          <p className="mx-auto mt-8 max-w-2xl text-base text-[var(--text-muted)] sm:text-lg">{siteContent.tagline}</p>
         </div>
       </section>
 
-      <section id="event-details" className="border-b border-stone-200/70 bg-[#fcfaf7]">
+      <section id="event-details" className="border-b border-[var(--border-soft)] bg-[var(--bg-soft)]">
         <div className="mx-auto w-full max-w-5xl px-4 py-14 sm:px-6 sm:py-16">
-          <h2 className="text-4xl font-semibold text-stone-900 sm:text-5xl">Event Details</h2>
+          <h2 className="text-4xl font-semibold text-[var(--text-strong)] sm:text-5xl">Event Details</h2>
 
-          <article className="mt-8 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
-            <p className="text-sm uppercase tracking-[0.16em] text-stone-500">{event.title}</p>
-            <p className="mt-3 text-3xl text-stone-900">{event.venue}</p>
-            <p className="mt-2 text-stone-700">{event.address}</p>
+          <article className="mt-8 rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-sm sm:p-8">
+            <p className="text-sm uppercase tracking-[0.16em] text-[var(--teal-700)]">{event.title}</p>
+            <p className="mt-3 text-3xl text-[var(--text-strong)]">{event.venue}</p>
+            <p className="mt-2 text-[var(--text-muted)]">{event.address}</p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={event.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-stone-300 px-4 py-2 text-sm font-medium text-stone-900 hover:bg-stone-100"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--teal-200)] bg-[var(--teal-50)] px-4 py-2 text-sm font-medium text-[var(--teal-700)] transition hover:bg-[var(--teal-200)]/45"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M12 21s7-5.85 7-11a7 7 0 1 0-14 0c0 5.15 7 11 7 11Z" stroke="currentColor" strokeWidth="1.8" />
@@ -57,7 +71,7 @@ export default function Home() {
                   href={event.calendarUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-stone-900 px-4 py-2 text-sm font-medium text-white hover:bg-stone-700"
+                  className="inline-flex items-center gap-2 rounded-full bg-[var(--purple-700)] px-4 py-2 text-sm font-medium text-white transition hover:bg-[var(--purple-500)]"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.8" />
@@ -69,15 +83,15 @@ export default function Home() {
               ) : null}
             </div>
 
-            <h3 className="mt-8 text-lg font-semibold text-stone-900">Schedule</h3>
+            <h3 className="mt-8 text-lg font-semibold text-[var(--text-strong)]">Schedule</h3>
             <ul className="mt-4 space-y-3">
               {event.schedule.map((item) => (
                 <li
                   key={`${event.title}-${item.label}`}
-                  className="flex items-center justify-between rounded-xl border border-stone-200 bg-stone-50 px-4 py-3"
+                  className="flex items-center justify-between rounded-xl border border-[var(--border-soft)] bg-[var(--surface-subtle)] px-4 py-3"
                 >
-                  <span className="text-stone-700">{item.label}</span>
-                  <span className="font-semibold text-stone-900">{item.time}</span>
+                  <span className="text-[var(--text-muted)]">{item.label}</span>
+                  <span className="font-semibold text-[var(--purple-700)]">{item.time}</span>
                 </li>
               ))}
             </ul>
@@ -85,10 +99,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="rsvp" className="bg-[#f8f4ee]">
+      <section
+        id="rsvp"
+        className="bg-[radial-gradient(circle_at_90%_18%,var(--purple-50)_0%,transparent_36%),radial-gradient(circle_at_8%_80%,var(--teal-50)_0%,transparent_34%),var(--bg-base)]"
+      >
         <div className="mx-auto w-full max-w-5xl px-4 py-14 sm:px-6 sm:py-16">
-          <h2 className="text-4xl font-semibold text-stone-900 sm:text-5xl">RSVP</h2>
-          <p className="mt-3 text-stone-700">Please respond by {siteContent.rsvpDeadline}.</p>
+          <h2 className="text-4xl font-semibold text-[var(--text-strong)] sm:text-5xl">RSVP</h2>
+          <p className="mt-3 text-[var(--text-muted)]">Please respond by {siteContent.rsvpDeadline}.</p>
 
           <div className="mt-8">
             <RsvpForm
