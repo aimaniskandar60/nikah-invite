@@ -16,6 +16,47 @@ type RsvpFormProps = {
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
+type SubmissionSummaryProps = {
+  attendance: AttendanceValue;
+  guestName: string;
+};
+
+function SubmissionSummary({ attendance, guestName }: SubmissionSummaryProps) {
+  const safeGuestName = guestName.trim() || "Dear guest";
+
+  if (attendance === "Yes") {
+    return (
+      <section
+        className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm sm:p-8"
+        role="status"
+        aria-live="polite"
+      >
+        <p className="text-sm uppercase tracking-[0.16em] text-emerald-700">RSVP Received</p>
+        <h3 className="mt-2 text-2xl font-semibold text-emerald-900">Alhamdulillah, thank you {safeGuestName}.</h3>
+        <p className="mt-3 text-emerald-800">
+          We are truly grateful that you will be attending and celebrating this special day with us.
+          Your presence means so much to our families.
+        </p>
+      </section>
+    );
+  }
+
+  return (
+    <section
+      className="rounded-2xl border border-amber-200 bg-amber-50 p-6 shadow-sm sm:p-8"
+      role="status"
+      aria-live="polite"
+    >
+      <p className="text-sm uppercase tracking-[0.16em] text-amber-700">RSVP Received</p>
+      <h3 className="mt-2 text-2xl font-semibold text-amber-900">Thank you for letting us know, {safeGuestName}.</h3>
+      <p className="mt-3 text-amber-800">
+        We are sorry you are unable to attend and we will miss celebrating with you.
+        We sincerely appreciate your swift response.
+      </p>
+    </section>
+  );
+}
+
 export function RsvpForm({
   formId,
   guestNameEntryId,
@@ -31,6 +72,8 @@ export function RsvpForm({
   const [attendance, setAttendance] = useState<AttendanceValue>(defaultAttendance);
   const [guests, setGuests] = useState(defaultGuests);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [submittedAttendance, setSubmittedAttendance] = useState<AttendanceValue | null>(null);
+  const [submittedGuestName, setSubmittedGuestName] = useState("");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     setSubmitState("submitting");
@@ -38,13 +81,23 @@ export function RsvpForm({
     if (!guestName.trim() || (attendance === "Yes" && !guests.trim())) {
       event.preventDefault();
       setSubmitState("error");
+      setSubmittedAttendance(null);
+      setSubmittedGuestName("");
+      return;
     }
+
+    setSubmittedAttendance(attendance);
+    setSubmittedGuestName(guestName);
   }
 
   function handleSubmissionFrameLoad() {
     if (submitState === "submitting") {
       setSubmitState("success");
     }
+  }
+
+  if (submitState === "success" && submittedAttendance) {
+    return <SubmissionSummary attendance={submittedAttendance} guestName={submittedGuestName} />;
   }
 
   return (
@@ -153,12 +206,6 @@ export function RsvpForm({
             {submitState === "submitting" ? "Submitting..." : "Submit RSVP"}
           </button>
         </div>
-
-        {submitState === "success" ? (
-          <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800" role="status">
-            Thank you. Your RSVP has been sent.
-          </p>
-        ) : null}
 
         {submitState === "error" ? (
           <p className="rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700" role="alert">
